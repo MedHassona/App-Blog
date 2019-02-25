@@ -1,0 +1,37 @@
+<div class="row"> 
+    <div class="col-xs-12">
+      <h2 translate="posts">Posts</h2> 
+      <ul class="list-group" *ngFor="let post of posts ;let i = index">
+          <li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': post.loveIts > 0,
+                'list-group-item-danger': post.loveIts < 0}">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <h3>{{post.title  | upDown : post.loveIts }} </h3>
+                </div>
+                <div class="col-lg-6 col-xs-6">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pull-right">
+                            <h3>{{post.createdAt | date:'M/d/yyyy, h:mm a'}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <h4>{{post.content}}</h4>
+            <div class="btn-group">
+                <button class="btn btn-success" (click)="lovedIt(i)" >
+                     <span translate="love">Love it</span>  
+                     <span *ngIf="post.loveIts > 0"> : {{post.loveIts}}</span>
+                </button>
+                <button class="btn btn-danger" (click)="nlovedIt(i)" > 
+                    <span translate="noLove"> Don't love it</span> 
+                    <span *ngIf="post.loveIts < 0"> : {{0 - post.loveIts}}</span>
+                </button>
+            </div>
+            <button class=" btn btn-danger pull-right" (click)="delete(post)" translate="delete">Delete</button>
+          </li>
+      </ul>
+    </div>
+  </div>
