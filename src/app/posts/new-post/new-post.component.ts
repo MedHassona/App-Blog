@@ -19,24 +19,23 @@ export class NewPostComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-  }
+  } 
 
   initForm(){
     this.postForm = this.formBuilder.group({
       title:['',Validators.required],
-      //mymail:['',Validators.pattern('^([a-zA-Z0-9_\-\.])@([a-zA-Z0-9_\-\.])\.([a-zA-Z]{2,5})')],
       content:['', Validators.required]
     });
   }
 
-
-
-  onSavePost(){
+  onSavePost(): void{
     const title = this.postForm.get('title').value;
     const content = this.postForm.get('content').value;
     //const mymail = this.postForm.get('mymail').value;
-    this.postService.newPost(new Post(title, content));
-    this.router.navigate(['/posts']);
+    this.postService.newPost(new Post(title, content))
+        .then(post => {
+          this.router.navigate(['/posts']);
+        });
   }
 
 }

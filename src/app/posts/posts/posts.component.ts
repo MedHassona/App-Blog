@@ -27,22 +27,22 @@ export class PostsComponent implements OnInit, OnDestroy {
       }
     );
     this.postService.emitPosts();
-    
-    
   }
 
-  lovedIt(i: number){
-    this.postService.loveIt(i);
+  lovedIt(i: number, post: Post){
+    this.postService.loveIt(i, post);
   }
 
-  nlovedIt(i: number){
-    this.postService.noLoveIt(i);
+  nlovedIt(i: number, post: Post){
+    this.postService.noLoveIt(i, post);
   }
 
-  delete(post: Post){
-    this.postService.deletePost(post);
+  delete(post: Post): void{
+    this.postService.deletePost(post)
+        .then(() => {
+          this.posts = this.postService.posts;
+        });
   }
-
 
   ngOnDestroy(){
     this.postsSubscription.unsubscribe();

@@ -21,11 +21,11 @@
             </div> 
             <h4>{{post.content}}</h4>
             <div class="btn-group">
-                <button class="btn btn-success" (click)="lovedIt(i)" >
+                <button class="btn btn-success" (click)="lovedIt(i, post)" >
                      <span translate="love">Love it</span>  
                      <span *ngIf="post.loveIts > 0"> : {{post.loveIts}}</span>
                 </button>
-                <button class="btn btn-danger" (click)="nlovedIt(i)" > 
+                <button class="btn btn-danger" (click)="nlovedIt(i, post)" > 
                     <span translate="noLove"> Don't love it</span> 
                     <span *ngIf="post.loveIts < 0"> : {{0 - post.loveIts}}</span>
                 </button>
