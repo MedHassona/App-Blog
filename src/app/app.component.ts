@@ -16,7 +16,7 @@ export class AppComponent {
       if(event.lang == 'ar')
       {
         this.textDir = 'rtl';
-      }
+      } 
       else
       {
         this.textDir = 'ltr';
