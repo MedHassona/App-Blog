@@ -43,7 +43,7 @@ export class PostServiceService {
   deletePost(post: Post): Promise<void>{
     const id = post.id;
     const url = `${'http://localhost:8000/articles/article'}/${id}`;
-
+    //x this.posts.filter(x => x.id === post.id)
     const postIndex = this.posts.findIndex(
       (postEl) => {
         if(postEl === post){
